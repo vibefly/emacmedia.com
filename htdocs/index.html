@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>emacmedia | Design + Technology Experiments</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="theme-summit">
+    <div class="backdrop">
+        <div class="backdrop__sun"></div>
+        <div class="backdrop__glow"></div>
+        <div class="backdrop__stars"></div>
+        <div class="backdrop__bird" aria-hidden="true"></div>
+        <div class="backdrop__bird backdrop__bird--alt" aria-hidden="true"></div>
+        <div class="backdrop__mountain"></div>
+        <div class="backdrop__peak"></div>
+        <div class="backdrop__ridge"></div>
+    </div>
+
+    <header id="main-header">
+        <a href="index.html" class="logo">emacmedia</a>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html#hero">Home</a></li>
+                <li><a href="index.html#experiments">Experiments</a></li>
+                <li><a href="index.html#notes">Notes</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="section hero">
+            <div class="hero__content">
+                <p class="eyebrow reveal" style="animation-delay: 0.1s;">A less-formal studio for design + tech play</p>
+                <h1 class="reveal" style="animation-delay: 0.2s;">Campfire experiments under a wide digital sky.</h1>
+                <p class="lead reveal" style="animation-delay: 0.3s;">
+                    emacmedia is a playground for motion, 3D, and interactive studies. Curious, lightweight,
+                    and always in-progress.
+                </p>
+                <div class="hero__actions reveal" style="animation-delay: 0.4s;">
+                    <a class="btn btn--primary" href="#experiments">Explore the field</a>
+                    <a class="btn btn--ghost" href="#contact">Say hello</a>
+                </div>
+            </div>
+            <div class="hero__card reveal" style="animation-delay: 0.5s;">
+                <div class="card__label">Field Log</div>
+                <h2>Current Focus</h2>
+                <p>Generative motion, WebGL sketches, and micro-interactions that feel tactile.</p>
+                <div class="card__meta">
+                    <span>Last updated: whenever the fire sparks</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiments" class="section section--flush">
+            <div class="section__header">
+                <h2>Experiments & Studies</h2>
+                <p>Grab a seat. These are live sketches from the lab, ranging from VR tunnels to shader tests.</p>
+            </div>
+            <div class="grid experiments-grid">
+                <a class="card" href="radial-aurora-vr.html">
+                    <h3>Radial Aurora</h3>
+                    <p>Immersive aurora pulses in a radial VR tunnel.</p>
+                </a>
+                <a class="card" href="fireworks.html">
+                    <h3>Audio Fireworks</h3>
+                    <p>Live audio drives reactive bursts and ambient HUD.</p>
+                </a>
+                <a class="card" href="tunnel-wireframe-vr.html">
+                    <h3>Wireframe Tunnel</h3>
+                    <p>Neon flight through a curved wireframe corridor.</p>
+                </a>
+                <a class="card" href="tunnel-dots-vr.html">
+                    <h3>Dotted Tunnel</h3>
+                    <p>Pulsing dots and twisting travel lines in VR.</p>
+                </a>
+                <a class="card" href="hexagon-tunnel-wireframe-vr.html">
+                    <h3>Hexagon Wireframe</h3>
+                    <p>Classic honeycomb tunnel with spatial depth.</p>
+                </a>
+                <a class="card" href="hexagon-color-tunnel-vr.html">
+                    <h3>Hexagon Color</h3>
+                    <p>Color pulses ride the hex tunnel in time.</p>
+                </a>
+                <a class="card" href="ocean-squall-vr.html">
+                    <h3>Ocean Squall</h3>
+                    <p>Stormy seas, rain, and lightning in VR.</p>
+                </a>
+                <a class="card" href="mountain-run-vr.html">
+                    <h3>Mountain Run</h3>
+                    <p>Neon ridge run with drifting haze.</p>
+                </a>
+                <a class="card" href="canyon-flight-vr.html">
+                    <h3>Canyon Flight</h3>
+                    <p>Sweeping canyon corridors with edge light.</p>
+                </a>
+                <a class="card" href="rain.html">
+                    <h3>Rain Shader</h3>
+                    <p>Layered rain with splashes and wind shear.</p>
+                </a>
+                <a class="card" href="neon-plazma.html">
+                    <h3>Neon Plazma</h3>
+                    <p>Drifting neon haze with parallax depth.</p>
+                </a>
+                <a class="card" href="icosahedron-wireframe.html">
+                    <h3>Icosahedron</h3>
+                    <p>Minimalist wireframe spin with a neon core.</p>
+                </a>
+                <a class="card" href="chroma-grid-wipe.html">
+                    <h3>Chroma Grid</h3>
+                    <p>Vibrant tile wipes in synchronized palette.</p>
+                </a>
+                <a class="card" href="refracting-dice.html">
+                    <h3>Refracting Dice</h3>
+                    <p>Beveled glass dice over shifting grid.</p>
+                </a>
+                <a class="card" href="lumen-garden.html">
+                    <h3>Lumen Garden</h3>
+                    <p>Soft light studies with layered atmospheres.</p>
+                </a>
+                <a class="card" href="portal-tunnel.html">
+                    <h3>Portal Tunnel</h3>
+                    <p>Rings of light moving through a portal funnel.</p>
+                </a>
+                <a class="card" href="radial-bulge.html">
+                    <h3>Radial Bulge</h3>
+                    <p>Breathing distortion and light pulses.</p>
+                </a>
+                <a class="card" href="radial-bulge-aurora.html">
+                    <h3>Bulge Aurora</h3>
+                    <p>Mixed aurora glow and warped surfaces.</p>
+                </a>
+                <a class="card" href="hexagon-tunnel-vr.html">
+                    <h3>Hexagon Tunnel</h3>
+                    <p>Classic VR tunnel with depth and cadence.</p>
+                </a>
+                <a class="card" href="vanta-background.html">
+                    <h3>Vanta Field</h3>
+                    <p>Ambient field test with drifting particles.</p>
+                </a>
+            </div>
+        </section>
+
+        <section id="notes" class="section">
+            <div class="section__header">
+                <h2>Camp Notes</h2>
+                <p>Quick notes, half-baked ideas, and experiments in progress.</p>
+            </div>
+            <div class="grid notes-grid">
+                <div class="note">
+                    <h3>Toolbox</h3>
+                    <p>Three.js, GLSL, GSAP, Web Audio, and a lot of late-night tweaking.</p>
+                </div>
+                <div class="note">
+                    <h3>Principles</h3>
+                    <p>Keep it tactile. Keep it playful. If it feels alive, it ships.</p>
+                </div>
+                <div class="note">
+                    <h3>Open to Collabs</h3>
+                    <p>Always down to trade sparks with other builders and artists.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="section__header">
+                <h2>Contact</h2>
+                <p>Want to trade ideas or share a project? Send a note.</p>
+            </div>
+            <form class="contact-card contact-form" action="https://formspree.io/f/mlglarlk" method="POST">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot">
+
+                <label for="contact-name">Name</label>
+                <input id="contact-name" name="name" type="text" placeholder="Your name" required>
+
+                <label for="contact-email">Email</label>
+                <input id="contact-email" name="email" type="email" placeholder="you@example.com" required>
+
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="5" placeholder="What’s on your mind?" required></textarea>
+
+                <button type="submit" class="btn btn--primary">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 emacmedia. All experiments welcome.</p>
+    </footer>
+</body>
+</html>
