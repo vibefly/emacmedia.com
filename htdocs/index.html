@@ -193,5 +193,176 @@
     <footer class="site-footer">
         <p>&copy; 2026 emacmedia. All experiments welcome.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('#contact .contact-form');
+            if (!form) return;
+
+            const contactSection = document.getElementById('contact');
+            const sectionHeader = contactSection.querySelector('.section__header');
+            const headerH2 = sectionHeader.querySelector('h2');
+            const headerP = sectionHeader.querySelector('p');
+            const formAction = form.action;
+
+            const statusMessages = [
+                'Stoking the campfire\u2026',
+                'Folding your note into a paper plane\u2026',
+                'Sending smoke signals\u2026',
+                'Asking the birds to carry it\u2026',
+                'Charting a path through the mountains\u2026',
+                'Warming up the beacon\u2026',
+                'Navigating by moonlight\u2026',
+                'The stars are aligning\u2026',
+                'Almost at base camp\u2026'
+            ];
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const btn = form.querySelector('button[type="submit"]');
+                btn.disabled = true;
+
+                /* Phase 1: Fade out form */
+                form.classList.add('is-fading');
+                headerP.style.transition = 'opacity 0.3s ease';
+                headerP.style.opacity = '0';
+
+                await sleep(420);
+                form.classList.add('is-hidden');
+                beginSending(formData);
+            });
+
+            async function beginSending(formData) {
+                /* Phase 2: Show progress UI */
+                const sending = document.createElement('div');
+                sending.className = 'contact-sending';
+                sending.innerHTML =
+                    '<div class="sending-status"></div>' +
+                    '<div class="sending-progress-track">' +
+                        '<div class="sending-progress-bar"></div>' +
+                    '</div>';
+                contactSection.insertBefore(sending, form);
+
+                const statusEl = sending.querySelector('.sending-status');
+                const barEl = sending.querySelector('.sending-progress-bar');
+
+                /* Trigger entrance */
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        sending.classList.add('is-visible');
+                    });
+                });
+
+                /* Cycle status messages */
+                let msgIdx = 0;
+                statusEl.textContent = statusMessages[msgIdx++];
+
+                let stopped = false;
+                const msgTimer = setInterval(() => {
+                    if (stopped) return;
+                    statusEl.classList.add('is-swapping');
+                    setTimeout(() => {
+                        statusEl.textContent = statusMessages[msgIdx % statusMessages.length];
+                        msgIdx++;
+                        statusEl.classList.remove('is-swapping');
+                    }, 200);
+                }, 1800);
+
+                /* Animate bar to ~75% over 5s */
+                animateBar(barEl, 75, 5000);
+
+                /* Fire the actual fetch */
+                let ok = false;
+                try {
+                    const res = await fetch(formAction, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    ok = res.ok;
+                } catch { ok = false; }
+
+                stopped = true;
+                clearInterval(msgTimer);
+
+                if (ok) {
+                    /* Phase 3: Complete bar & show delivered */
+                    barEl.style.transition = 'width 0.5s ease-out';
+                    barEl.style.width = '100%';
+
+                    statusEl.classList.add('is-swapping');
+                    await sleep(180);
+                    statusEl.textContent = 'Message delivered!';
+                    statusEl.classList.remove('is-swapping');
+
+                    await sleep(1400);
+
+                    /* Phase 4: Transition to thank-you */
+                    sending.classList.remove('is-visible');
+                    await sleep(450);
+                    sending.remove();
+                    showThankYou();
+                } else {
+                    /* Error: bring form back */
+                    sending.classList.remove('is-visible');
+                    await sleep(400);
+                    sending.remove();
+
+                    form.classList.remove('is-hidden');
+                    requestAnimationFrame(() => {
+                        form.classList.remove('is-fading');
+                        headerP.style.opacity = '1';
+                        const btn = form.querySelector('button[type="submit"]');
+                        btn.disabled = false;
+                    });
+                }
+            }
+
+            function showThankYou() {
+                /* Crossfade headline */
+                headerH2.style.transition = 'opacity 0.3s ease';
+                headerH2.style.opacity = '0';
+
+                setTimeout(() => {
+                    headerH2.textContent = 'Thank You';
+                    headerH2.style.opacity = '1';
+                }, 320);
+
+                /* Build thank-you content */
+                const ty = document.createElement('div');
+                ty.className = 'form-thank-you';
+                ty.innerHTML =
+                    '<p>We got your note and look forward to connecting.</p>' +
+                    '<p class="thank-you-sub">We\u2019ll get back to you soon.</p>';
+
+                headerP.style.display = 'none';
+                contactSection.insertBefore(ty, form);
+                form.remove();
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        ty.classList.add('is-visible');
+                    });
+                });
+            }
+
+            function sleep(ms) {
+                return new Promise(r => setTimeout(r, ms));
+            }
+
+            function animateBar(el, targetPercent, duration) {
+                const start = performance.now();
+                const tick = (now) => {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 2);
+                    el.style.width = (eased * targetPercent) + '%';
+                    if (progress < 1) requestAnimationFrame(tick);
+                };
+                requestAnimationFrame(tick);
+            }
+        });
+    </script>
 </body>
 </html>
