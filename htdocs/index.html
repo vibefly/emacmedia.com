@@ -223,6 +223,9 @@
                 const btn = form.querySelector('button[type="submit"]');
                 btn.disabled = true;
 
+                /* Lock section height so nothing shifts during transitions */
+                contactSection.style.minHeight = contactSection.offsetHeight + 'px';
+
                 /* Phase 1: Fade out form */
                 form.classList.add('is-fading');
                 headerP.style.transition = 'opacity 0.3s ease';
