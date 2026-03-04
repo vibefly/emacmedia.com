@@ -185,7 +185,8 @@
                 <label for="contact-message">Message</label>
                 <textarea id="contact-message" name="message" rows="5" placeholder="What’s on your mind?" required></textarea>
 
-                <button type="submit" class="btn btn--primary">Send</button>
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAACmZ_W6qeHifXHKt" data-theme="dark"></div>
+            <button type="submit" class="btn btn--primary">Send</button>
             </form>
         </section>
     </main>
@@ -367,5 +368,6 @@
             }
         });
     </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
